@@ -1,0 +1,11 @@
+#grid-container {
+    display: flex;
+    height: 900px;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.gridCell {
+    background-color: red;
+    flex-grow: 1;
+}
