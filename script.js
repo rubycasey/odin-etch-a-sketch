@@ -5,12 +5,22 @@ let gridSideSize = 16;
 const container = document.getElementById("grid-container");
 const containerSizePx = window.getComputedStyle(container).getPropertyValue('height');
 const containerSize = containerSizePx.slice(0, containerSizePx.length-2);
+const resetButton = document.getElementById("reset-button");
 
 // Creating divs
-console.log(containerSize)
 createNewGrid();
 
+// Reset Button
+resetButton.addEventListener("click", () => {
+    gridSideSize = prompt("Please enter grid column size:", gridSideSize)
+    createNewGrid();
+});
+
+// Functions
 function createNewGrid() {
+    // Clear Existing Grid
+    document.querySelectorAll('.gridCell').forEach(i => i.remove());
+
     // Container Math
     const gridSize = gridSideSize ** 2;
     let gridCellSize = containerSize / gridSideSize;
@@ -28,9 +38,6 @@ function createNewGrid() {
         gridCell.addEventListener("mouseenter", () => {
             gridCell.style.opacity = Number(gridCell.style.opacity) + 0.1;
         });
-        //gridCell.addEventListener("mouseleave", () => {
-        //    gridCell.style.opacity = Number(gridCell.style.opacity) + 0.1;
-        //});
 
         container.appendChild(gridCell);
         //console.log("Cell Created");
