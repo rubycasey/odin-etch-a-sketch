@@ -12,7 +12,10 @@ createNewGrid();
 
 // Reset Button
 resetButton.addEventListener("click", () => {
-    gridSideSize = prompt("Please enter grid column size:", gridSideSize)
+    gridSideSize = prompt("Please enter grid column size:", gridSideSize);
+    if (gridSideSize == null) {
+        return;
+    };
     createNewGrid();
 });
 
@@ -24,7 +27,7 @@ function createNewGrid() {
     // Container Math
     const gridSize = gridSideSize ** 2;
     let gridCellSize = containerSize / gridSideSize;
-    container.style.width = containerSizePx
+    container.style.width = containerSizePx;
 
     for (i = 0; i != gridSize; i++){
         // Create Cell
@@ -40,6 +43,5 @@ function createNewGrid() {
         });
 
         container.appendChild(gridCell);
-        //console.log("Cell Created");
     }
 };
